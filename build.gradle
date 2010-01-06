@@ -18,7 +18,9 @@ dependencies {
 configure(jar.osgi) {
     name = 'GroovyOSGiSample'
     version = '0.1'
-    instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.GroovyOSGiSampleActivator'
+    instruction 'Bundle-Activator',
+        'org.jggug.kobo.osgi.ServiceRegistrationSampleActivator'
+        //'org.jggug.kobo.osgi.GroovyOSGiSampleActivator'
     instruction 'Import-Package',
         'groovy.lang;version="1.7"',
         'org.codehaus.groovy.reflection;version="1.7"',
