@@ -1,0 +1,16 @@
+configure(jar.osgi) {
+    def type = System.properties['type']
+    name = 'Groovy OSGi Sample/Service Registration'
+    symbolicName = 'org.jggug.kobo.osgi.service-registration'
+    jar.archiveName = "service-registration.jar"
+    instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.ServiceRegistrationActivator'
+    instruction 'Export-Package', '*'
+    version = '0.1'
+    instruction 'Import-Package',
+        'groovy.lang;version="1.7"',
+        'org.codehaus.groovy.reflection;version="1.7"',
+        'org.codehaus.groovy.runtime;version="1.7"',
+        'org.codehaus.groovy.runtime.callsite;version="1.7"',
+        'org.osgi.framework;version="1.4"'
+}
+

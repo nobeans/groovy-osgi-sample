@@ -19,7 +19,7 @@ import org.osgi.framework.BundleActivator
 import org.osgi.framework.BundleContext
 import org.osgi.framework.ServiceRegistration
 
-class ServiceRegistrationSampleActivator implements BundleActivator {
+class ServiceRegistrationActivator implements BundleActivator {
 
     ServiceRegistration registration
     void start(BundleContext context) {
@@ -34,7 +34,7 @@ class ServiceRegistrationSampleActivator implements BundleActivator {
     }
 
     void stop(BundleContext context) {
-        println "ServiceRegistration BundleActivator stopped. Bye!!"
+        println "ServiceRegistration BundleActivator stopped."
         registration.unregister()
     }
 }

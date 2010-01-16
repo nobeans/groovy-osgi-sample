@@ -1,0 +1,14 @@
+configure(jar.osgi) {
+    name = 'Groovy OSGi Sample/Simple'
+    symbolicName = 'org.jggug.kobo.osgi.simple'
+    jar.archiveName = "simple.jar"
+    instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.SimpleActivator'
+    version = '0.1'
+    instruction 'Import-Package',
+        'groovy.lang;version="1.7"',
+        'org.codehaus.groovy.reflection;version="1.7"',
+        'org.codehaus.groovy.runtime;version="1.7"',
+        'org.codehaus.groovy.runtime.callsite;version="1.7"',
+        'org.osgi.framework;version="1.4"'
+}
+

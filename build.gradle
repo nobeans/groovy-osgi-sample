@@ -1,62 +1,40 @@
-group   = 'org.jggug.kobo'
-version = '0.1-SNAPSHOT'
+subprojects {
+    group   = 'org.jggug.kobo'
+    version = '0.1-SNAPSHOT'
 
-usePlugin 'groovy'
-usePlugin 'osgi'
+    usePlugin 'groovy'
+    usePlugin 'osgi'
 
-repositories {
-    mavenCentral()
-    //mavenRepo(urls: 'http://repository.jboss.org/maven2/') // for org.eclipse:osgi:3.4.3.R34x_v20081215-1030
-}
-
-dependencies {
-    groovy 'org.codehaus.groovy:groovy:1.7.0'
-    compile 'org.osgi:osgi_R4_core:1.0'
-    //compile 'org.eclipse:osgi:3.4.3.R34x_v20081215-1030'
-}
-
-configure(jar.osgi) {
-    def type = System.properties['type']
-    if (!type || type == 'simple') {
-        name = 'Groovy OSGi Simple Sample'
-        symbolicName = 'org.jggug.kobo.groovy-osgi-simple-sample'
-        jar.archiveName = "groovy-osgi-simple-sample-bundle.jar"
-        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.GroovyOSGiSampleActivator'
-    } else if (!type || type == 'service') {
-        name = 'Groovy OSGi Service Registration Simple'
-        symbolicName = 'org.jggug.kobo.groovy-osgi-service-sample'
-        jar.archiveName = "groovy-osgi-service-sample-bundle.jar"
-        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.ServiceRegistrationSampleActivator'
-        instruction 'Export-Package', '*'
-    } else {
-        System.err.println "Error: unregistered type: $type"
-        System.exit 1
+    repositories {
+        mavenCentral()
+        //mavenRepo(urls: 'http://repository.jboss.org/maven2/') // for org.eclipse:osgi:3.4.3.R34x_v20081215-1030
     }
-    version = '0.1'
-    instruction 'Import-Package',
-        'groovy.lang;version="1.7"',
-        'org.codehaus.groovy.reflection;version="1.7"',
-        'org.codehaus.groovy.runtime;version="1.7"',
-        'org.codehaus.groovy.runtime.callsite;version="1.7"',
-        'org.osgi.framework;version="1.4"'
+
+    dependencies {
+        groovy 'org.codehaus.groovy:groovy:1.7.0'
+        compile 'org.osgi:osgi_R4_core:1.0'
+        //compile 'org.eclipse:osgi:3.4.3.R34x_v20081215-1030'
+    }
+
+    // -----------------------------
+    // for multi-bytes characters
+    // -----------------------------
+    def defaultEncoding = 'UTF-8'
+    compileJava {
+        options.encoding = defaultEncoding
+    }
+    compileTestJava {
+        options.encoding = defaultEncoding
+    }
+    compileGroovy {
+        groovyOptions.encoding = defaultEncoding
+        options.encoding = defaultEncoding
+    }
+    compileTestGroovy {
+        groovyOptions.encoding = defaultEncoding
+        options.encoding = defaultEncoding
+    }
 }
 
-// -----------------------------
-// for multi-bytes characters
-// -----------------------------
-def defaultEncoding = 'UTF-8'
-compileJava {
-    options.encoding = defaultEncoding
-}
-compileTestJava {
-    options.encoding = defaultEncoding
-}
-compileGroovy {
-    groovyOptions.encoding = defaultEncoding
-    options.encoding = defaultEncoding
-}
-compileTestGroovy {
-    groovyOptions.encoding = defaultEncoding
-    options.encoding = defaultEncoding
-}
+dependsOnChildren()
 

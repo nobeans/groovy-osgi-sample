@@ -18,14 +18,14 @@ package org.jggug.kobo.osgi
 import org.osgi.framework.BundleActivator
 import org.osgi.framework.BundleContext
 
-class GroovyOSGiSampleActivator implements BundleActivator {
+class SimpleActivator implements BundleActivator {
 
     void start(BundleContext context) {
-        println "Groovy BundleActivator started..."
+        println "Simple BundleActivator started..."
     }
 
     void stop(BundleContext context) {
-        println "Groovy BundleActivator stopped. Bye!!"
+        println "Simple BundleActivator stopped."
     }
 
 }
