@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jggug.kobo.osgi
+package org.jggug.kobo.osgi.service.impl
 
 import org.osgi.framework.BundleActivator
 import org.osgi.framework.BundleContext
@@ -21,20 +21,21 @@ import org.osgi.framework.ServiceRegistration
 
 class ServiceRegistrationActivator implements BundleActivator {
 
-    ServiceRegistration registration
+ //   ServiceRegistration registration
     void start(BundleContext context) {
         println "ServiceRegistration BundleActivator started..."
-        ClassLoader originalClassLoader = Thread.currentThread().contextClassLoader
-        try { Thread.currentThread().contextClassLoader = getClass().classLoader
-            GroovyGreeter myService = new GroovyGreeterImpl()
-            registration = context.registerService(GroovyGreeter.class.getName(), myService, null)
-        } finally {
-            Thread.currentThread().contextClassLoader = originalClassLoader
-        }
+ //       ClassLoader originalClassLoader = Thread.currentThread().contextClassLoader
+ //       try { Thread.currentThread().contextClassLoader = getClass().classLoader
+ //           GroovyGreeter myService = new GroovyGreeterImpl()
+ //           registration = context.registerService(GroovyGreeter.class.getName(), myService, null)
+ //       } finally {
+ //           Thread.currentThread().contextClassLoader = originalClassLoader
+ //       }
     }
 
     void stop(BundleContext context) {
         println "ServiceRegistration BundleActivator stopped."
-        registration.unregister()
+//        registration.unregister()
     }
 }
+

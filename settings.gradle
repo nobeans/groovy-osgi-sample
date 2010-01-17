@@ -1,2 +1,5 @@
-include "simple", "serviceRegistration"
+include "simple",
+        "service-api",
+        "service-registration",
+        "service-client"
 

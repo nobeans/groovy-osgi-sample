@@ -15,8 +15,16 @@
  */
 package org.jggug.kobo.osgi
 
-class GroovyGreeterImpl implements GroovyGreeter {
-    void sayHello() {
-        println "Hello from the Groovy Greeter!"
+import org.osgi.framework.BundleActivator
+import org.osgi.framework.BundleContext
+
+class ServiceClientActivator implements BundleActivator {
+
+    void start(BundleContext context) {
+        println "ServiceClient BundleActivator started..."
+    }
+
+    void stop(BundleContext context) {
+        println "ServiceClient BundleActivator stopped."
     }
 }
