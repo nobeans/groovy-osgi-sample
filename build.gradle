@@ -70,7 +70,7 @@ project(':service-api') {
             'org.codehaus.groovy.runtime;version="1.7"',
             'org.codehaus.groovy.runtime.callsite;version="1.7"',
             'org.osgi.framework;version="1.4"'
-        instruction 'Export-Package', 'org.jggug.kobo.osgi.service'
+        instruction 'Export-Package', 'org.jggug.kobo.osgi'
     }
 }
 
@@ -84,34 +84,14 @@ project(':service-registration') {
         symbolicName = 'org.jggug.kobo.osgi.service-registration'
         jar.archiveName = "service-registration.jar"
 
-        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.service.impl.ServiceRegistrationActivator'
+        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.ServiceRegistrationActivator'
         instruction 'Import-Package',
             'groovy.lang;version="1.7"',
             'org.codehaus.groovy.reflection;version="1.7"',
             'org.codehaus.groovy.runtime;version="1.7"',
             'org.codehaus.groovy.runtime.callsite;version="1.7"',
-            'org.osgi.framework;version="1.4"',
-            'org.jggug.kobo.osgi.service'
-    }
-}
-
-project(':service-client') {
-    dependencies {
-        compile project(':service-api')
-    }
-    configure(jar.osgi) {
-        version = '0.1'
-        name = 'Groovy OSGi Sample/Service Client'
-        symbolicName = 'org.jggug.kobo.osgi.service-client'
-        jar.archiveName = "service-client.jar"
-
-        instruction 'Import-Package',
-            'groovy.lang;version="1.7"',
-            'org.codehaus.groovy.reflection;version="1.7"',
-            'org.codehaus.groovy.runtime;version="1.7"',
-            'org.codehaus.groovy.runtime.callsite;version="1.7"',
-            'org.osgi.framework;version="1.4"',
-            'org.jggug.kobo.osgi.service'
+            'org.osgi.framework;version="1.4"'
+        instruction 'Required-Bundle', 'org.jggug.kobo.osgi.service-api'
     }
 }
 

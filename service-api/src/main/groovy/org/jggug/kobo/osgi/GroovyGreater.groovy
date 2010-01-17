@@ -13,12 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jggug.kobo.osgi.service.impl
+package org.jggug.kobo.osgi
 
-import org.jggug.kobo.osgi.service.GroovyGreeter
-
-class GroovyGreeterImpl implements GroovyGreeter {
-    void sayHello() {
-        println "Hello from the Groovy Greeter!"
-    }
+interface GroovyGreeter {
+     void sayHello()
 }
+
