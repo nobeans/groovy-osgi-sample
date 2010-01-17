@@ -16,7 +16,8 @@ subprojects {
 
     dependencies {
         groovy 'org.codehaus.groovy:groovy:1.7.0'
-        compile 'org.osgi:osgi_R4_core:1.0'
+        compile 'org.osgi:org.osgi.core:4.2.0'
+        compile 'org.osgi:org.osgi.compendium:4.2.0'
         //compile 'org.eclipse:osgi:3.4.3.R34x_v20081215-1030'
     }
 
@@ -95,22 +96,24 @@ project(':service-registration') {
     }
 }
 
-project(':service-client') {
+project(':service-tracker') {
     dependencies {
         compile project(':service-api')
     }
     configure(jar.osgi) {
         version = '0.1'
-        name = 'Groovy OSGi Sample/Service Client'
-        symbolicName = 'org.jggug.kobo.osgi.service-client'
-        jar.archiveName = "service-client.jar"
+        name = 'Groovy OSGi Sample/Service Tracker'
+        symbolicName = 'org.jggug.kobo.osgi.service-tracker'
+        jar.archiveName = "service-tracker.jar"
 
+        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.service.client.ServiceTrackerClientActivator'
         instruction 'Import-Package',
             'groovy.lang;version="1.7"',
             'org.codehaus.groovy.reflection;version="1.7"',
             'org.codehaus.groovy.runtime;version="1.7"',
             'org.codehaus.groovy.runtime.callsite;version="1.7"',
             'org.osgi.framework;version="1.4"',
+            'org.osgi.util.tracker;version="1.4"',
             'org.jggug.kobo.osgi.service'
     }
 }
