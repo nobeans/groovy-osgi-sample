@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+  <scr:component enabled="true" immediate="true" name="ServiceDsClient">
+    <implementation class="org.jggug.kobo.osgi.service.client.ServiceDsClientActivator"/>
+    <reference name="greeter"
+        interface="org.jggug.kobo.osgi.service.GroovyGreeter"
+        cardinality="1..1"
+        policy="static"
+        bind="bindGreeter"
+        unbind="unbindGreeter"
+    />
+  </scr:component>
+</components>

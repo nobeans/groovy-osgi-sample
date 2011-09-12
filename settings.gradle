@@ -1,5 +1,7 @@
 include "simple",
         "service-api",
         "service-registration",
-        "service-tracker"
+        "service-tracker",
+        "service-ds",
+        "service-dsclient"
 

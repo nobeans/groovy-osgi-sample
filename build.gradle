@@ -118,3 +118,56 @@ project(':service-tracker') {
     }
 }
 
+project(':service-ds') {
+    dependencies {
+        compile project(':service-api')
+    }
+    configure(jar) {
+        into("OSGI-INF") {
+            from "$projectDir/OSGI-INF"
+        }
+    }
+    configure(jar.manifest) {
+        version = '0.1'
+        name = 'Groovy OSGi Sample/Declared Service'
+        symbolicName = 'org.jggug.kobo.osgi.service-ds'
+        jar.archiveName = "service-ds.jar"
+
+        instruction 'Import-Package',
+            'groovy.lang;version="1.7"',
+            'org.codehaus.groovy.reflection;version="1.7"',
+            'org.codehaus.groovy.runtime;version="1.7"',
+            'org.codehaus.groovy.runtime.callsite;version="1.7"',
+            'org.osgi.framework;version="1.4"',
+            'org.jggug.kobo.osgi.service'
+        instruction 'Service-Component', 'OSGI-INF/component.xml'
+    }
+}
+
+project(':service-dsclient') {
+    dependencies {
+        compile project(':service-api')
+    }
+    configure(jar) {
+        into("OSGI-INF") {
+            from "$projectDir/OSGI-INF"
+        }
+    }
+    configure(jar.manifest) {
+        version = '0.1'
+        name = 'Groovy OSGi Sample/DS Client'
+        symbolicName = 'org.jggug.kobo.osgi.service-dsclient'
+        jar.archiveName = "service-dsclient.jar"
+
+        instruction 'Bundle-Activator', 'org.jggug.kobo.osgi.service.client.ServiceDsClientActivator'
+        instruction 'Import-Package',
+            'groovy.lang;version="1.7"',
+            'org.codehaus.groovy.reflection;version="1.7"',
+            'org.codehaus.groovy.runtime;version="1.7"',
+            'org.codehaus.groovy.runtime.callsite;version="1.7"',
+            'org.osgi.framework;version="1.4"',
+            'org.osgi.util.tracker;version="1.4"',
+            'org.jggug.kobo.osgi.service'
+        instruction 'Service-Component', 'OSGI-INF/component.xml'
+    }
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+  <scr:component enabled="true" immediate="true" name="GroovyGreeter">
+    <implementation class="org.jggug.kobo.osgi.service.impl.GroovyGreeterDsImpl"/>
+    <service servicefactory="false">
+      <provide interface="org.jggug.kobo.osgi.service.GroovyGreeter"/>
+    </service>
+  </scr:component>
+</components>
