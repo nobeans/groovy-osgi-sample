@@ -6,8 +6,8 @@ allprojects {
 }
 
 subprojects {
-    usePlugin 'groovy'
-    usePlugin 'osgi'
+    apply plugin: 'groovy'
+    apply plugin: 'osgi'
 
     repositories {
         mavenCentral()
@@ -42,7 +42,7 @@ subprojects {
 }
 
 project(':simple') {
-    configure(jar.osgi) {
+    configure(jar.manifest) {
         version = '0.1'
         name = 'Groovy OSGi Sample/Simple'
         symbolicName = 'org.jggug.kobo.osgi.simple'
@@ -59,7 +59,7 @@ project(':simple') {
 }
 
 project(':service-api') {
-    configure(jar.osgi) {
+    configure(jar.manifest) {
         version = '0.1'
         name = 'Groovy OSGi Sample/Service API'
         symbolicName = 'org.jggug.kobo.osgi.service-api'
@@ -79,7 +79,7 @@ project(':service-registration') {
     dependencies {
         compile project(':service-api')
     }
-    configure(jar.osgi) {
+    configure(jar.manifest) {
         version = '0.1'
         name = 'Groovy OSGi Sample/Service Registration'
         symbolicName = 'org.jggug.kobo.osgi.service-registration'
@@ -100,7 +100,7 @@ project(':service-tracker') {
     dependencies {
         compile project(':service-api')
     }
-    configure(jar.osgi) {
+    configure(jar.manifest) {
         version = '0.1'
         name = 'Groovy OSGi Sample/Service Tracker'
         symbolicName = 'org.jggug.kobo.osgi.service-tracker'
